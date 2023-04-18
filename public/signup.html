@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign up Page</title>
+    <style>
+      * {
+        font-weight: bolder;
+        color: rgb(211, 11, 11);
+      }
+
+      body {
+        background-color: rgb(109, 30, 30);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        background-size: contain;
+      }
+
+      .horizontal {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+      }
+
+      .vertical {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        padding-left: 10%;
+      }
+      .vertical-inside {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 50%;
+        /* padding-left: %; */
+      }
+
+      form {
+        background-color: white;
+        width: 40vw;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        position: relative;
+        top: 20%;
+        border: 2px rgb(10, 10, 10) solid;
+        border-radius: 15px;
+        height: 70vh;
+        transition:all 1s;
+      }
+
+      form:hover {
+        transition:all 1s;
+        width: 45vw;
+        height: 75vh;
+        border-top: 6px;
+        border-left: 6px;
+        box-shadow: 10px 10px 15px rgb(7, 7, 7);
+        gap: 25px;
+      }
+
+      /* input {
+        width: %;
+      } */
+
+      input[type="date"]:focus {
+        color: black;
+      }
+
+      button {
+        width: 80%;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        height: 30px;
+        transition:all 1s;
+        font-size: medium;
+      }
+
+      button:hover {
+        background-color: rgb(212, 11, 11);
+        width: 85%;
+        color: white;
+        height: 40px;
+        transition:all 1s;
+        font-size: large;
+      }
+
+      .blood-bank-name,
+      .license-number,
+      .email,
+      .contact,
+      .valid-from,
+      .valid-till,
+      .password,
+      .confirm-password{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        color: black;
+      }
+
+      input{
+        border-radius: 5px;
+        width: 80%;
+        padding-left: 10px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <form action="/auth/signup" method="POST" id="form">
+      <header>
+        <h1>Sign Up Form</h1>
+      </header>
+
+      <!-- Blood Bank Name -->
+      <div class="vertical">
+        <label for="blood_bank_name">Enter your blood bank name</label>
+        <div class="blood-bank-name" >
+            <input
+              type="text"
+              id="blood_bank_name"
+              name="blood_bank_name"
+              required
+              placeholder="Enter your Blood Bank Name"
+            />
+          </div>
+        </div>
+      </div>
+
+      
+      
+      <div class="vertical">
+        <div class="horizontal">
+          <div class="vertical-inside">
+            <!-- Email -->
+            <label for="email">Enter your Email</label>
+            <div class="email">
+              <input type="email" name="email" id="email" placeholder="Enter your email" required />
+            </div>
+          </div>
+
+          <!-- Contact -->
+          <div class="vertical-inside">
+            <label for="contact">Enter your Contact No.</label>
+            <div class="contact">
+              <input type="contact" name="contact" id="contact" placeholder="Enter your contact number" required />
+            </div>  
+          </div>
+        </div>
+        <div class="horizontal"></div>
+      </div>
+
+      <!-- License Number -->
+      <div class="vertical">
+        <label for="license_number">Enter your license number</label>
+        <div class="license-number">
+          <input
+            type="text"
+            name="license_number"
+            id="license_number"
+            placeholder="Enter your license number"
+            required
+          />
+        </div>
+      </div>
+      
+      <!-- Valid From - Valid Till -->
+      <div class="vertical">
+        <div class="horizontal">
+          <!-- valid from -->
+          <div class="vertical-inside">
+            <label for="valid_from">License Valid from</label>
+            <div class="valid-from">
+              <input type="date" name="valid_from" id="valid_from" required />
+            </div>
+          </div>
+
+          <!-- valid till -->
+          <div class="vertical-inside"_
+            <label for="valid_till">License Valid Till</label>
+            <div class="valid-till">
+              <input type="date" name="valid_till" id="valid_till" required />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Password - Confirm Password -->
+      <div class="vertical">
+        <div class="horizontal">
+          <div class="vertical-inside">
+            <!-- Password\ -->
+            <label for="password">Enter your password</label>
+            <div class="password">
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Enter your password"
+              />
+            </div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="vertical-inside">
+            <label for="confirm_password">Confirm your password</label>
+            <div class="confirm-password">
+              <input
+                type="text"
+                name="confirm_password"
+                id="confirm_password"
+                placeholder="Confirm your password"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="horizontal"></div>
+      </div>
+      <div class="vertical">
+        <ul id="err"></ul>
+      </div>
+      <div class="vertical" style="align-items: center; padding-left: 0px">
+        <button type="submit" onclick="validate_password()">Sign Up</button>
+        <button onclick="location.replace('./login.html')">Login</button>
+      </div>
+    </form>
+  </body>
+  <script>
+    function validate_password() {
+
+      try{
+        var pass = document.getElementById('password').value;
+        var confirm_pass = document.getElementById('confirm_password').value;
+        console.log(confirm_pass);
+        console.log(pass);
+        if (pass != confirm_pass) {
+          document.getElementById('err').innerHTML = '<li>Password and Confirm Password Should be Same</li>'
+        } else {
+          document.getElementById('err').innerHTML = ''
+        }
+      } catch(error){
+        console.log(error);
+      }
+      }
+  </script>
+</html>

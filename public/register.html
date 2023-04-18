@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Form</title>
+	<style>
+        body{
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(236, 90, 90);
+        }
+		label {
+			display: block;
+			margin-top: 10px;
+			font-size: 16px;
+		}
+
+		input {
+			padding: 10px;
+			font-size: 16px;
+			margin-top: 5px;
+			width: 100%;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+        }
+        form{
+            background-color: white;
+            border-radius: 10px;
+            margin: 4%;
+            padding: 5%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            display: flex;
+            background-color: beige;
+            width: 50%;
+        }
+        .box{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+        }
+        .hero{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        input , textarea{
+            padding: 5px;
+            border-radius: 10px;
+            border-width: 0px;
+            
+        } 
+        .vertical{
+            display: flex;
+            flex-direction: column;
+            width: fit-content;
+            margin: 3%;
+        }
+        button{
+            width: 50%;
+            height: 30px;
+            border-radius: 10px;
+            background-color: rgb(244, 236, 236); 
+            color: white;
+            font-size: 20px;
+            font-weight: bolder;
+            margin: 2%;
+        }
+        h1{
+            text-align: center;
+        }
+        input{
+            border: 4px solid red;
+            width: fit-content;
+        }
+        .hero , .vertical{
+            display: flex;
+            flex-direction: row;
+        }
+        .two{
+            display: flex;
+            flex-direction: column;
+        }
+        .vertical{
+            gap: 10%;    
+        }
+        label{
+            font-size: larger;
+            font-weight: bolder;
+            white-space: nowrap;
+        }
+        a , p{
+            font-size: larger;
+        } 
+        a{
+            font-weight: bolder;
+        }
+        .btn{
+            margin: 20px;
+        }
+        h1{
+            background-color: white;
+        }
+	</style>
+</head>
+<body>
+    <div class="box">
+        <form action="" method="post" class="form">
+
+        <h1>Blood Bank Details</h1>
+
+
+        <div class="one">
+
+            
+
+                <h2>Blood Bank Address</h2> <br> 
+
+                <div class="vertical">
+
+                    <div class="small">
+					    <label for="state">State*</label>
+                        <input type="text" name="state" id="state"   placeholder="Select State">
+                    </div>
+
+                    <div class="small">
+					    <label for="district">District*</label>
+                        <input type="text" name="district" id="district"   placeholder="Select District">
+                    </div>
+
+				    <div class="small">
+					    <label for="city">City</label>
+                        <input type="text" name="district" id="city"   placeholder="">
+                    </div>
+                    
+                </div>
+
+            
+
+	    </div>
+
+
+		<div class="two">
+
+            
+
+                <h2>Blood Bank Information</h2> <br>
+
+                    <div class="vertical">
+
+                        <div class="small">
+                            <label for="bankname">Blood Bank Name*</label>
+                            <input type="text" name="bankname" id="bankname"   placeholder="">
+                        </div>
+
+					
+                        <div class="small">
+                            <label for="hospitalname">Parent Hospital Name*</label>
+                            <input type="text" name="hospitalname" id="hospitalname"   placeholder="">
+                        </div>
+
+                        <div class="small">
+                            <label for="website">Website</label>
+                            <input type="text" name="website" id="website"   placeholder="">
+                        </div>
+					
+                    </div>
+
+                    <div class="vertical">
+
+                        <div class="small">
+                            <label for="shortname">Short Name</label>
+                            <input type="text" name="shortname" id="shortname"   placeholder="">
+                        </div>
+					
+                        <div class="small">
+                            <label for="category">Category*</label>
+                            <input type="text" name="category" id="category"   placeholder="Select type">
+                        </div>
+					
+                        <div class="small">
+                            <label for="contactperson">Contact Person*</label>
+                            <input type="text" name="contactperson" id="contactperson"   placeholder="">
+                        </div>
+					
+                    </div>
+                    
+
+                    <div class="vertical">
+
+                        <div class="small">
+                            <label for="email">Email</label>
+                            <input type="text" name="email" id="email"  placeholder="">
+                        </div>
+					
+                        <div class="small">
+                            <label for="Contactno">Contact No</label>
+                            <input type="text" name="Contactno" id="Contactno"   placeholder="">
+                        </div>
+					
+                        <div class="small">
+                            <label for="faxno">Fax No.</label>
+                            <input type="text" name="faxno" id="faxno"   placeholder="">
+                        </div>
+					
+                    </div>
+
+				    <div class="vertical">
+
+                        <div class="small">
+                            <label for="license">License No.</label>
+                            <input type="text" name="license" id="license"  placeholder="">
+                        </div>
+					
+                        <div class="small">
+                            <label for="fromdate">From Date</label>
+                            <input type="text" name="fromdate" id="fromdate"   placeholder="">
+                        </div>
+					
+                        <div class="small">
+                            <label for="todate">To Date</label>
+                            <input type="text" name="todate" id="todate"   placeholder="">
+                        </div>
+					
+                    </div>
+
+				    <div class="vertical">
+
+                        <div class="small">
+                            <label for="component">Component Facility</label>
+                            <input type="text" name="component"  id="component"  placeholder="Select Value">    
+                        </div>
+                    
+                        <div class="small">
+                            <label for="apheresis">Apheresis Facility</label>
+                            <input type="text" name="apheresis" id="apheresis"  placeholder="Select Value">
+                        </div>
+					
+                        <div class="small">
+                            <label for="helpineno">Helpline No.</label>
+                            <input type="text" name="helpineno" id="helpineno"  placeholder="">
+                        </div>
+					
+                    </div>
+
+                </div> 
+
+                <div class="btn">
+                    <a href="donationinfo.html">Next</a> 
+                    <p>Already have an account? <a href="login.html">Login here
+                    </a> </p> 
+                    
+                </div>
+                
+            
+	    </div>
+	</form>
+</div>
+</body>
+</html>
