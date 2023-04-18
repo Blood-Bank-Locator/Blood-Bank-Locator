@@ -14,17 +14,10 @@ app.use("/auth", auth);
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URI_WRITE);
-    // await connectDB(process.env.MONGO_URI_READ);
-    app.listen(process.env.PORT, () => {
-      console.log(
-        "Server running on port :",
-        process.env.PORT
-      );
-    });
+    app.listen(process.env.PORT);
   } catch (error) {
     console.log(error);
   }
 };
 
 start();
-module.exports = { app };

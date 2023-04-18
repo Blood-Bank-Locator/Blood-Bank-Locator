@@ -36,12 +36,10 @@ const signup = async (req, res) => {
 
   const user = await Authentication.findOne({ _id: email });
   if (user) {
-    res
-      .status(400)
-      .json({
-        sucsess: false,
-        msg: "user already registered!!!",
-      });
+    res.status(400).json({
+      sucsess: false,
+      msg: "user already registered!!!",
+    });
   }
   const otp = otpGenerator.generate(6, {
     digit: true,
@@ -50,7 +48,6 @@ const signup = async (req, res) => {
     specialChars: false,
   });
 
-  console.log(req.body);
   const hashOtp = await bcrypt.hash(otp, salt);
   const hashPass = await bcrypt.hash(password, salt);
   const hashLicense = await bcrypt.hash(
@@ -67,7 +64,6 @@ const signup = async (req, res) => {
     valid_from: valid_from,
     otp: hashOtp,
   };
-  console.log(tempInput);
   const doc = await Temp.findOne({ _id: email });
   if (doc) {
     await Temp.updateOne({ _id: email }, { otp: hashOtp });
@@ -81,9 +77,9 @@ const signup = async (req, res) => {
   );
   transport.sendMail(mailoptions, (err, info) => {
     if (err) {
-      console.error(err);
       return res.status(404).json({
         success: false,
+        err: err,
         msg: "unable to send otp",
       });
     } else {
@@ -104,7 +100,6 @@ const verify = async (req, res) => {
       msg: "Your Otp is expired!!",
     });
 
-  console.log(otp, doc.otp[doc.otp.length - 1]);
   const otp_checked = await bcrypt.compare(
     otp,
     doc.otp[doc.otp.length - 1]
