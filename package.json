@@ -6,6 +6,9 @@
   "scripts": {
     "start": "nodemon app.js"
   },
+  "engines": {
+    "node": ">=18.15.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Himanshu0208/Blood-Bank-Locator.git"
