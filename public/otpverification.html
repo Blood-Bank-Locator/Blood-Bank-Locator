@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otp Verification</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(237, 146, 146);
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            position: absolute;
+            top: 200px;
+        }
+        #otpsection{
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            position: absolute;
+            top: 200px;
+        }
+        #getotp , #verifyotp{
+            color: white;
+            font-weight: 800;
+            font-size: larger;
+            border: solid 2px red;
+            background-color: red;
+        }
+        label{
+            font-size: 30px;
+            font-weight: 800;
+        }
+        #emailinput,#otp{
+            font-size: larger;
+        }
+        p{
+            font-size: large;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+        <form id="emailsection">
+            <label for="email">Enter your vaild email address </label>
+            <input type="email" id="emailinput" placeholder="abc@gmail.com" name="email" required>
+            <input type="submit" id="getotp" value="Get OTP">
+        </form>
+
+        <div id="otpsection">
+            <label for="otp">Enter your OTP</label>
+            <input type="number" id="otp" name="otp" required>
+            <p id="otpmsg">Your OTP will expire in <span id="timer"></span> seconds</p>
+            <input type="submit" id="verifyotp"  value="Verify OTP">
+        </div>
+
+        <script>
+            const emailsection=document.getElementById("emailsection");
+            const otpsection=document.getElementById("otpsection");
+
+            emailsection.addEventListener("submit",function(event){
+                event.preventDefault();
+                const emailinput=document.getElementById("emailinput");
+                const email=emailinput.value;
+                const otp = Math.floor(100000 + Math.random() * 900000);
+                console.log(`OTP sent to ${email}`)
+                otpsection.style.display="flex";
+                emailsection.style.display="none";
+                starttimer();
+            });
+
+            let timeleft=300
+            let timerid;
+            function starttimer(){
+                let timer=document.getElementById("timer");
+                timer.textContent=timeleft;
+                if(timeleft==0){
+                    clearTimeout(timerid);
+                    alert("Otp expired! Please request a new one.")
+                    emailsection.style.display=block;
+                    otpsection.style.display=none;
+                }
+                else{
+                    timeleft--;
+                    timerid=setTimeout(starttimer,1000)
+                }
+
+            }
+        </script>
+</body>
+</html>
