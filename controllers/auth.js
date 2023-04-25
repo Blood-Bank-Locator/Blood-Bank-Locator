@@ -10,16 +10,11 @@ const Temp = require("../models/temp");
 const saltRounds = 10;
 const salt = bcrypt.genSaltSync(saltRounds);
 
-const {
-  transport,
-  createMailOptions,
-} = require("./nodemailer");
+const { transport, createMailOptions } = require("./nodemailer");
 const { log } = require("console");
 const auth = require("../models/auth");
 const login = (req, res) => {
-  res
-    .status(200)
-    .json({ sucsess: true, login: true, signup: false });
+  res.status(200).json({ sucsess: true, login: true, signup: false });
 };
 
 const signup = async (req, res) => {
@@ -47,13 +42,10 @@ const signup = async (req, res) => {
     upperCaseAlphabets: false,
     specialChars: false,
   });
-
+  console.log(typeof otp);
   const hashOtp = await bcrypt.hash(otp, salt);
   const hashPass = await bcrypt.hash(password, salt);
-  const hashLicense = await bcrypt.hash(
-    license_number,
-    salt
-  );
+  const hashLicense = await bcrypt.hash(license_number, salt);
   const tempInput = {
     _id: email,
     contact: contact,
@@ -71,10 +63,7 @@ const signup = async (req, res) => {
     const data = new Temp(tempInput);
     await data.save();
   }
-  const mailoptions = createMailOptions(
-    req.body.email,
-    otp
-  );
+  const mailoptions = createMailOptions(req.body.email, otp);
   transport.sendMail(mailoptions, (err, info) => {
     if (err) {
       return res.status(404).json({
@@ -84,9 +73,7 @@ const signup = async (req, res) => {
       });
     } else {
       console.log("Email sended :" + info.response);
-      return res
-        .status(200)
-        .json({ success: true, otp: otp });
+      return res.sendFile(path.resolve(__dirname + "/../public/otpverification.html"));
     }
   });
 };
@@ -100,10 +87,7 @@ const verify = async (req, res) => {
       msg: "Your Otp is expired!!",
     });
 
-  const otp_checked = await bcrypt.compare(
-    otp,
-    doc.otp[doc.otp.length - 1]
-  );
+  const otp_checked = await bcrypt.compare(otp, doc.otp[doc.otp.length - 1]);
   if (email === doc._id && otp_checked) {
     const auth = new Authentication({
       _id: doc._id,

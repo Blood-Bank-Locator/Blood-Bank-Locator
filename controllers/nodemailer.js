@@ -6,7 +6,6 @@ var transport = nodemailer.createTransport({
   auth: {
     user: process.env.MAIL_USER,
     pass: process.env.MAIL_PASS, //put here app pass word make => app - mail , device -> windows computer
-    // pass: "gpelehsegixpqnfw",
   },
 });
 function createMailOptions(email, otp) {

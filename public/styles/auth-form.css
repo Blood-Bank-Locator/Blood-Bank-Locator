@@ -1,0 +1,107 @@
+* {
+  font-weight: bolder;
+  color: rgb(211, 11, 11);
+}
+
+body {
+  background-color: rgb(109, 30, 30);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  background-size: contain;
+}
+
+.horizontal {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding-left: 10%;
+}
+.vertical-inside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 50%;
+  /* padding-left: %; */
+}
+
+form {
+  background-color: white;
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  top: 20%;
+  border: 2px rgb(10, 10, 10) solid;
+  border-radius: 15px;
+  height: 70vh;
+  transition: all 1s;
+}
+
+form:hover {
+  transition: all 1s;
+  /* width: 45vw;
+  height: 75vh; */
+  border-top: 6px;
+  border-left: 6px;
+  box-shadow: 10px 10px 15px rgb(7, 7, 7);
+  /* gap: 25px; */
+}
+
+/* input {
+  width: %;
+} */
+
+input[type="date"]:focus {
+  color: black;
+}
+
+button {
+  width: 80%;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  height: 30px;
+  transition: all 1s;
+  font-size: medium;
+}
+
+button:hover {
+  background-color: rgb(212, 11, 11);
+  width: 85%;
+  color: white;
+  height: 40px;
+  transition: all 1s;
+  font-size: large;
+}
+
+.blood-bank-name,
+.license-number,
+.email,
+.contact,
+.valid-from,
+.valid-till,
+.password,
+.confirm-password,
+.otp {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: black;
+}
+
+input {
+  border-radius: 5px;
+  width: 80%;
+  padding-left: 10px;
+}
