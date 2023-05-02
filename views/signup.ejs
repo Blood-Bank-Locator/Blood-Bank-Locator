@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign up Page</title>
-    <link rel="stylesheet" href="./styles/auth-form.css">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles/auth-form.css">
 
   </head>
   <body>
@@ -122,27 +122,28 @@
         <ul id="err"></ul>
       </div>
       <div class="vertical" style="align-items: center; padding-left: 0px">
-        <button type="submit" onclick="validate_password()">Sign Up</button>
+        <button type="submit" id="submit">Sign Up</button>
         <button onclick="location.replace('./login.html')">Login</button>
       </div>
     </form>
   </body>
   <script>
-    function validate_password() {
-
+    let submit = document.getElementById('submit');
+    submit.addEventListener('click',function (event) {
       try{
         var pass = document.getElementById('password').value;
         var confirm_pass = document.getElementById('confirm_password').value;
         console.log(confirm_pass);
         console.log(pass);
         if (pass != confirm_pass) {
-          document.getElementById('err').innerHTML = '<li>Password and Confirm Password Should be Same</li>'
+          document.getElementById('err').innerHTML = '<li>Password and Confirm Password Should be Same</li>';
+          event.preventDefault();
         } else {
           document.getElementById('err').innerHTML = ''
         }
       } catch(error){
         console.log(error);
       }
-      }
+    })
   </script>
 </html>

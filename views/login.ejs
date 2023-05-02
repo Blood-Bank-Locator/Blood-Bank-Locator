@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+        font-size: 16px;
+      }
+
+      input {
+        padding: 10px;
+        font-size: 16px;
+        margin-top: 5px;
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+      form {
+        background-color: white;
+        border-radius: 10px;
+        margin: 2%;
+        padding: 2%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .hero {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      input,
+      textarea {
+        border-radius: 10px;
+        border-width: 0px;
+      }
+      .vertical {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+      }
+      .signin {
+        width: 50%;
+        height: 30px;
+        border-radius: 10px;
+        background-color: rgb(211, 11, 11);
+        color: white;
+        font-size: 20px;
+        margin: 5%;
+        position: relative;
+        left: 10%;
+      }
+      .forgot {
+        width: fit-content;
+        margin: 2%;
+        position: relative;
+        left: 60%;
+        border: 2px white;
+        padding: 2%;
+        background-color: #fff;
+        color: blue;
+      }
+      h1 {
+        text-align: center;
+      }
+      .box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      p,
+      a {
+        font-size: larger;
+      }
+      p {
+        font-weight: 900;
+        display: block;
+        background-color: white;
+        border-radius: 10px;
+        padding: 1%;
+      }
+      #email,
+      #password {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <h1>The gift of blood is a gift to someone's life</h1>
+      <form action="/auth/login" method="post" class="form">
+        <h2>Blood Bank Login : Portal/Application</h2>
+        <br />
+        <div class="hero">
+          <div class="vertical">
+            Username
+            <input
+              type="text"
+              name="email"
+              id="email"
+              placeholder="Enter your username"
+            />
+          </div>
+          <div class="vertical">
+            Password
+            <input
+              type="text"
+              name="password"
+              id="password"
+              placeholder="Enter your password"
+            />
+            <button class="forgot" type="forgot">
+              Forgot Password?
+            </button>
+          </div>
+        </div>
+        <button class="signin" type="submit">
+          Sign in!
+        </button>
+        <p>
+          Don't have an account?
+          <a href="/signup">Register here</a>
+        </p>
+      </form>
+    </div>
+  </body>
+</html>

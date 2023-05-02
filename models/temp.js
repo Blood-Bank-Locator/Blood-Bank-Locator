@@ -34,7 +34,7 @@ const Schema = new mongoose.Schema(
     },
 
     otp: {
-      type: [String],
+      type: String,
       required: true,
     },
     createdAt: {

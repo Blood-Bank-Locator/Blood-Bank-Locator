@@ -44,7 +44,7 @@ form {
   top: 20%;
   border: 2px rgb(10, 10, 10) solid;
   border-radius: 15px;
-  height: 70vh;
+  /* height: 70vh; */
   transition: all 1s;
 }
 

@@ -1,7 +1,8 @@
 const path = require("path");
 const otpGenerator = require("otp-generator");
-const _ = require("lodash");
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+require("dotenv").config();
 
 const Authentication = require("../models/auth");
 const License = require("../models/license.js");
@@ -13,25 +14,37 @@ const salt = bcrypt.genSaltSync(saltRounds);
 const { transport, createMailOptions } = require("./nodemailer");
 const { log } = require("console");
 const auth = require("../models/auth");
-const login = (req, res) => {
-  res.status(200).json({ sucsess: true, login: true, signup: false });
+
+// ****************** Login *********************** // 
+const login = async (req, res) => {
+  const { email, password } = req.body;
+  console.log(email);
+  const doc = await Authentication.findById(email);
+  if (!doc) {
+    console.log("email not exist");
+    return res
+      .status(200)
+      .json({ success: false, login: false, signup: false, msg: "email not exist" });
+  }
+
+  if (await bcrypt.compare(password, doc.password)) {
+    const token = jwt.sign({ user: doc._id }, process.env.SECRET_KEY, { expiresIn: "1h" });
+    return res.status(200).json({ success: true, login: true, signup: false, token: token });
+  }
+
+  console.log("wrong password");
+  res.status(200).json({ success: false, login: false, signup: false, msg: "wrong password" });
 };
 
-const signup = async (req, res) => {
-  const {
-    blood_bank_name,
-    email,
-    contact,
-    license_number,
-    valid_from,
-    valid_till,
-    password,
-    confirm_password,
-  } = req.body;
 
+// ****************** Signup *********************** //
+const signup = async (req, res) => {
+  const { blood_bank_name, email, contact, license_number, valid_from, valid_till, password } =
+    req.body;
+  console.log(req.body);
   const user = await Authentication.findOne({ _id: email });
   if (user) {
-    res.status(400).json({
+    return res.status(400).json({
       sucsess: false,
       msg: "user already registered!!!",
     });
@@ -42,7 +55,7 @@ const signup = async (req, res) => {
     upperCaseAlphabets: false,
     specialChars: false,
   });
-  console.log(typeof otp);
+  console.log(otp);
   const hashOtp = await bcrypt.hash(otp, salt);
   const hashPass = await bcrypt.hash(password, salt);
   const hashLicense = await bcrypt.hash(license_number, salt);
@@ -73,21 +86,26 @@ const signup = async (req, res) => {
       });
     } else {
       console.log("Email sended :" + info.response);
-      return res.sendFile(path.resolve(__dirname + "/../public/otpverification.html"));
+      return res
+        .status(200)
+        .sendFile("otpverification.html", { root: path.resolve(__dirname + "/../public") });
     }
   });
 };
 
+// ****************** Verify *********************** //
 const verify = async (req, res) => {
+  console.log("otp verify");
   const { email, otp } = req.body;
+  console.log(req.body);
   const doc = await Temp.findOne({ _id: email });
   if (!doc)
     return res.status(200).json({
       success: true,
       msg: "Your Otp is expired!!",
     });
-
-  const otp_checked = await bcrypt.compare(otp, doc.otp[doc.otp.length - 1]);
+  console.log(doc);
+  const otp_checked = await bcrypt.compare(otp, doc.otp);
   if (email === doc._id && otp_checked) {
     const auth = new Authentication({
       _id: doc._id,

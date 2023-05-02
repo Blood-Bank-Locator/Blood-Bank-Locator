@@ -1,0 +1,100 @@
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: beige;
+  overflow-x: hidden;
+}
+.main {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.top {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.telephone {
+  width: 10px;
+  height: 10px;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  gap: 60px;
+}
+a {
+  white-space: nowrap;
+  color: white;
+  background-color: red;
+  text-decoration: none;
+  padding: 7px;
+  border-radius: 10px;
+  font-size: smaller;
+  font-weight: 800;
+  height: max-content;
+}
+a:hover {
+  color: red;
+  background-color: rgb(245, 232, 232);
+  text-decoration: underline;
+  border: 2px solid red;
+}
+.icon {
+  height: 150px;
+  width: 150px;
+  position: relative;
+  left: 50px;
+}
+.two {
+  width: 100%;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  gap: 50px;
+  padding: 20px;
+}
+.box1 {
+  display: flex;
+  justify-content: space-between;
+}
+.img1 {
+  width: 30%;
+  height: 100%;
+  padding-right: 30px;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+}
+.img2 {
+  width: 40%;
+  height: 100%;
+}
+.p1 {
+  color: black;
+  font-size: medium;
+  font-weight: 400;
+}
+h1 {
+  color: black;
+  background-color: beige;
+}
+.three {
+  display: flex;
+  gap: 130px;
+}
+.box2 {
+  display: flex;
+  justify-content: center;
+}
+.heading {
+  font-size: 80px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  box-shadow: 2px;
+  background-color: rgb(239, 239, 166);
+  padding: 2%;
+}
