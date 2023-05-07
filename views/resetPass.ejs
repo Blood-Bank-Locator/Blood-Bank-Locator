@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles/login.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/javaScript/resetPass.js" defer></script>
+  </head>
+  <body>
+    <div class="box">
+      <h1 id="text">Don't be scare we are there for you </h1>
+      <p
+        id="result"
+        style="font-size: medium; font-weight: 700"
+      ></p>
+      <form action="/auth/reset" method="post" class="form">
+        <h2>Reset Your PassWord</h2>
+        <br />
+        <div class="hero">
+          <div class="vertical">
+            Password
+            <input
+              type="password"
+              name="password"
+              autocomplete="current-password"
+              placeholder="Enter Your New Password"
+              required
+              id="password"
+            />
+          </div>
+          <div class="vertical">
+            Confirm Password
+            <input
+              type="password"
+              name="text"
+              autocomplete="current-password"
+              placeholder="Confirm Your Password"
+              required
+              id="confirm-password"
+            />
+          </div>
+        </div>
+        <button
+          class="signin"
+          type="submit"
+          onclick="handelSubmit(event)"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

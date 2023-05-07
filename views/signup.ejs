@@ -37,7 +37,7 @@
             <!-- Email -->
             <label for="email">Enter your Email</label>
             <div class="email">
-              <input type="email" name="email" id="email" placeholder="Enter your email" required />
+              <input type="email" name="email" id="email" placeholder="Enter your email" pattern="/\.com$|\.in$/" required />
             </div>
           </div>
 
@@ -128,22 +128,33 @@
     </form>
   </body>
   <script>
-    let submit = document.getElementById('submit');
-    submit.addEventListener('click',function (event) {
-      try{
-        var pass = document.getElementById('password').value;
-        var confirm_pass = document.getElementById('confirm_password').value;
-        console.log(confirm_pass);
-        console.log(pass);
-        if (pass != confirm_pass) {
-          document.getElementById('err').innerHTML = '<li>Password and Confirm Password Should be Same</li>';
-          event.preventDefault();
-        } else {
-          document.getElementById('err').innerHTML = ''
-        }
-      } catch(error){
-        console.log(error);
-      }
-    })
+    const currentDate = new Date().toISOString().split('T')[0];
+    document.getElementById('valid_from').setAttribute('min', currentDate);
+    document.getElementById('valid_till').setAttribute('max', currentDate);
+
+
+    // const email = document.getElementById("email");
+    // email.addEventListener("invalid", function(event) {
+    //   event.preventDefault();
+    //   email.setCustomValidity("Please enter a valid email id");
+    // });
+
+    // let submit = document.getElementById('submit');
+    // submit.addEventListener('click',function (event) {
+    //   try{
+    //     var pass = document.getElementById('password').value;
+    //     var confirm_pass = document.getElementById('confirm_password').value;
+    //     console.log(confirm_pass);
+    //     console.log(pass);
+    //     if (pass != confirm_pass) {
+    //       document.getElementById('err').innerHTML = '<li>Password and Confirm Password Should be Same</li>';
+    //       event.preventDefault();
+    //     } else {
+    //       document.getElementById('err').innerHTML = ''
+    //     }
+    //   } catch(error){
+    //     console.log(error);
+    //   }
+    // })
   </script>
 </html>

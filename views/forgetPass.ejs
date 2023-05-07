@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles/login.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/javaScript/forgetPass.js" defer></script>
+  </head>
+  <body>
+    <div class="box">
+      <h1>Don't be scare we are here for you</h1>
+      <p
+      id="result"
+      style="
+            font-size: medium;
+            font-weight: 700;
+            "
+        >
+      </p>
+      <form action="/auth/" method="post" class="form" >
+        <h2>Reset Password</h2>
+        <br />
+        <div class="hero">
+          <div class="vertical">
+            Username
+            <input
+              type="text"
+              name="email"
+              id="email"
+              placeholder="Enter your email"></input>
+          </div>
+        </div>
+        <button class="signin" type="submit"  onclick="handelSubmit(event)">
+          Submit
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

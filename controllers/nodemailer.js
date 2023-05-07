@@ -8,7 +8,7 @@ var transport = nodemailer.createTransport({
     pass: process.env.MAIL_PASS, //put here app pass word make => app - mail , device -> windows computer
   },
 });
-function createMailOptions(email, otp) {
+function createMailOptionsOTP(email, otp) {
   const mailoptions = {
     from: process.env.MAIL_USER,
     to: email,
@@ -25,4 +25,27 @@ function createMailOptions(email, otp) {
   return mailoptions;
 }
 
-module.exports = { transport, createMailOptions };
+function createMailOptionsForgetPass(email, url) {
+  const mailoptions = {
+    from: process.env.MAIL_USER,
+    to: email,
+    subject: "One Time Password",
+    html: `<h3>Don't Panic we are here</h3>
+    <p>
+      This is an Auto genrated mail containg the link for resetting your password<br>
+      Kindly ignore if it was not you <br>
+      <a href="${url}">
+      <button href='${url}'>Reset Password</button>
+      </a>
+    </p>
+    <p>Please don't share this to anyone this link will automaticall expire after 15 min's</p>`,
+  };
+
+  return mailoptions;
+}
+
+module.exports = {
+  transport,
+  createMailOptionsOTP,
+  createMailOptionsForgetPass,
+};
