@@ -84,3 +84,15 @@ function getCitiesForState(state) {
                 return [];
         }
     }
+    function submitBlood() {
+        const bloodAplus = document.getElementById("A+").value;
+        const bloodAminus = document.getElementById("A-").value;
+        const bloodBplus = document.getElementById("B+").value;
+        const bloodBminus = document.getElementById("B-").value;
+        const bloodABplus = document.getElementById("AB+").value;
+        const bloodABminus = document.getElementById("AB-").value;
+        const bloodOplus = document.getElementById("O+").value;
+        const bloodOminus = document.getElementById("O-").value;
+        
+        alert(`A+ Blood: ${bloodAplus} litre\nA- Blood: ${bloodAminus} litre\nB+ Blood: ${bloodBplus} litre\nB- Blood: ${bloodBminus} litre\nAB+ Blood: ${bloodABplus} litre\nAB- Blood: ${bloodABminus} litre\nO+ Blood: ${bloodOplus} litre\nO- Blood: ${bloodOminus} litre`);
+    }

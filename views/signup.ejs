@@ -29,8 +29,6 @@
         </div>
       </div>
 
-      
-      
       <div class="vertical">
         <div class="horizontal">
           <div class="vertical-inside">
@@ -122,7 +120,7 @@
         <ul id="err"></ul>
       </div>
       <div class="vertical" style="align-items: center; padding-left: 0px">
-        <button type="submit" id="submit">Sign Up</button>
+        <button  onclick="validateEmail()" type="submit" id="submit">Sign Up</button>
         <button onclick="location.replace('./login.html')">Login</button>
       </div>
     </form>
@@ -131,7 +129,18 @@
     const currentDate = new Date().toISOString().split('T')[0];
     document.getElementById('valid_from').setAttribute('min', currentDate);
     document.getElementById('valid_till').setAttribute('max', currentDate);
-
+    function validateEmail() {
+      const email = document.getElementById("email").value;
+      const emailDiv = document.getElementById("emailDiv");
+      // check if email ends with ".com" or ".in"
+      if (email.endsWith(".com") || email.endsWith(".in")) {
+        emailDiv.innerText = email;
+        emailDiv.style.color = "black";
+      } else {
+        emailDiv.innerText = "Enter valid email id";
+        emailDiv.style.color = "red";
+      }
+    }
 
     // const email = document.getElementById("email");
     // email.addEventListener("invalid", function(event) {
