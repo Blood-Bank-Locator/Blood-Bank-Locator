@@ -1,81 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>User Details</title>
-    <link rel="stylesheet" href="styles/userform.css" />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="javaScript/userForm.js" defer></script>
-  </head>
-  <body>
-    <h1><%= name %></h1>
-    <form action="/user/details" method="post" onsubmit="handelSubmit(this)">
-      <label for="names">Name:</label>
-      <input type="text" id="names" name="names" required value=<%= name %> readonly/>
-      <label for="license">License Number:</label>
-      <input
-        type="text"
-        id="license"
-        name="license"
-        required
-        value=<%= license %>
-        readonly
-      />
-      <label for="fromDate">From Date:</label>
-      <input
-        type="date"
-        id="fromDate"
-        name="fromDate"
-        required
-        value=<%= valid_from %>
-      />
-      <label for="toDate">Till Date:</label>
-      <input
-        type="date"
-        id="toDate"
-        name="toDate"
-        required
-        value=<%= valid_till %>
-      />
-      <label for="address">Address:</label>
-      <textarea
-        id="address"
-        name="address"
-        rows="5"
-        required
-      ></textarea>
-      <label for="pinCode">Pin Code:</label>
-      <input
-        type="text"
-        id="pinCode"
-        name="pinCode"
-        required
-      />
-      <label for="state">State:</label>
-      <select id="state" name="state" required>
-        <option value="" selected disabled>
-          Select state
-        </option>
-        <option value="Andhra Pradesh">
-          Andhra Pradesh
-        </option>
-        <option value="Arunachal Pradesh">
-          Arunachal Pradesh
-        </option>
+<head>
+	<title>Form Example</title>
+	<link rel="stylesheet" href="styles/userform.css">
+</head>
+<body>
+	<h1>Blood Donation Form</h1>
+	<form action="#" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="license">License Number:</label>
+        <input type="text" id="license" name="license" required>
+        <label for="fromDate">From Date:</label>
+        <input type="date" id="fromDate" name="fromDate" required>
+        <label for="toDate">Till Date:</label>
+        <input type="date" id="toDate" name="toDate" required>
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="5" required></textarea>
+        <label for="pinCode">Pin Code:</label>
+        <input type="text" id="pinCode" name="pinCode" required>
+        <label for="state">State:</label>
+        <select id="state" name="state" required>
+        <option value="" selected disabled>Select state</option>
+        <option value="Andhra Pradesh">Andhra Pradesh</option>
+        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
         <option value="Assam">Assam</option>
         <option value="Bihar">Bihar</option>
         <option value="Chhattisgarh">Chhattisgarh</option>
         <option value="Goa">Goa</option>
         <option value="Gujarat">Gujarat</option>
         <option value="Haryana">Haryana</option>
-        <option value="Himachal Pradesh">
-          Himachal Pradesh
-        </option>
+        <option value="Himachal Pradesh">Himachal Pradesh</option>
         <option value="Jharkhand">Jharkhand</option>
         <option value="Karnataka">Karnataka</option>
         <option value="Kerala">Kerala</option>
-        <option value="Madhya Pradesh">
-          Madhya Pradesh
-        </option>
+        <option value="Madhya Pradesh">Madhya Pradesh</option>
         <option value="Maharashtra">Maharashtra</option>
         <option value="Manipur">Manipur</option>
         <option value="Meghalaya">Meghalaya</option>
@@ -91,11 +50,11 @@
         <option value="Uttar Pradesh">Uttar Pradesh</option>
         <option value="Uttarakhand">Uttarakhand</option>
         <option value="West Bengal">West Bengal</option>
-      </select>
-      <label for="city">City:</label>
-      <input type="text" id="city" name="city" required />
-      <label for="blood">Blood Available:</label>
-      <br><br>
+        </select>
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required>
+        <label for="blood">Blood Available:</label>
+        <br><br>
         <div class="box">
 
         <div class="box2">
@@ -129,9 +88,13 @@
             <label for="O-">O-</label>
             <input type="number" id="O-" name="O-" placeholder="Enter in litre"><br><br>
         </div>
-      </div>
-      <br><br>
-      <button type="submit" onclick="handelSubmit(event)">Submit</button>
+        
+        </div>
+        <br><br>
+
+        <div class="submit">
+        <button  class="submit2" type="button" onclick="submitBlood()">Submit</button>
+        </div>
     </form>
-  </body>
+</body>
 </html>

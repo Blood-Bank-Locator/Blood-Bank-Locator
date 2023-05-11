@@ -67,3 +67,30 @@ textarea {
 select {
   height: 40px;
 }
+.box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.box2,
+.box3,
+.box5 {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+.box4 {
+  display: flex;
+  justify-content: center;
+  gap: 27px;
+}
+.submit {
+  font-size: larger;
+  display: flex;
+  justify-content: center;
+}
+.submit2 {
+  font-size: larger;
+  display: flex;
+  justify-content: center;
+}

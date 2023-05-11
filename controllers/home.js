@@ -32,7 +32,7 @@ const about = (req, res) => {
 };
 
 const findBlood = (req, res) => {
-  res.render("findBlood", {
+  res.render("location", {
     title: "Find Blood",
   });
 };

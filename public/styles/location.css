@@ -2,7 +2,11 @@ body {
   background-color: white;
   color: red;
   font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom right, #e9b0b0, #ffffff);     
+  background: linear-gradient(
+    to bottom right,
+    #e9b0b0,
+    #ffffff
+  );
 }
 
 h1 {
@@ -45,6 +49,7 @@ option {
   color: #333;
 }
 
-select:hover, option:hover {
+select:hover,
+option:hover {
   background: #eee;
 }
