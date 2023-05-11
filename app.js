@@ -4,6 +4,7 @@ const cookie = require("cookie-parser");
 const auth = require("./routes/auth");
 const home = require("./routes/home");
 const user = require("./routes/user");
+const find = require("./routes/find");
 
 const connectDB = require("./db/connect");
 const ejs = require("ejs");
@@ -27,6 +28,8 @@ app.use("/auth", auth);
 app.use("/", home);
 
 app.use("/user", user);
+
+app.use("/find",find);
 
 // app.get("/second", (req, res) => {
 //   res.render("second", { title: "Home Page" });

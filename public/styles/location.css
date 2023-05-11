@@ -53,3 +53,98 @@ select:hover,
 option:hover {
   background: #eee;
 }
+
+.container {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Set font and background color for the page */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+/* Style the table */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  background-color: white;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the table head */
+thead {
+  background-color: #f2f2f2;
+}
+
+/* Style the table head cells */
+th {
+  text-align: left;
+  padding: 12px;
+}
+
+/* Style the table body rows */
+tr {
+  border-bottom: 1px solid #ddd;
+}
+
+/* Style the table body cells */
+td {
+  padding: 12px;
+}
+
+/* Style the email column to be wider */
+td.email {
+  width: 30%;
+}
+
+/* Style the blood column to be centered */
+td.blood {
+  text-align: center;
+}
+
+/* Style the phone column to be hidden on small screens */
+@media screen and (max-width: 600px) {
+  td.phone {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+  }
+
+  td:before {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    content: attr(data-column);
+    color: #000;
+    font-weight: bold;
+  }
+}

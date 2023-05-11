@@ -5,47 +5,37 @@ const blood = new mongoose.Schema({
     type: String,
     required: [true, "this is the id of the document"],
   },
-  blood: {
-    a: {
-      pos: {
-        type: Number,
-        required: true,
-      },
-      neg: {
-        type: Number,
-        required: true,
-      },
-    },
-    b: {
-      pos: {
-        type: Number,
-        required: true,
-      },
-      neg: {
-        type: Number,
-        required: true,
-      },
-    },
-    o: {
-      pos: {
-        type: Number,
-        required: true,
-      },
-      neg: {
-        type: Number,
-        required: true,
-      },
-    },
-    ab: {
-      pos: {
-        type: Number,
-        required: true,
-      },
-      neg: {
-        type: Number,
-        required: true,
-      },
-    },
+  "a+": {
+    type: Number,
+    required: true,
+  },
+  "a-": {
+    type: Number,
+    required: true,
+  },
+  "b+": {
+    type: Number,
+    required: true,
+  },
+  "b-": {
+    type: Number,
+    required: true,
+  },
+  "o+": {
+    type: Number,
+    required: true,
+  },
+  "o-": {
+    type: Number,
+      required: true,
+  },
+  "ab+": {
+    type: Number,
+    required: true,
+  },
+  "ab-": {
+    type: Number,
+    required: true,
   },
 });
 

@@ -48,10 +48,6 @@ const user = async (req, res) => {
       })
     );
   }
-
-  // console.log(auth);
-  // console.log(license);
-  // console.log(blood);
   var data = {
     name: auth.blood_bank_name,
     contact: auth.contact,
@@ -64,17 +60,6 @@ const user = async (req, res) => {
 };
 
 const form = async (req, res) => {
-  // const {
-  //   name,
-  //   license,
-  //   formDate,
-  //   toDate,
-  //   address,
-  //   pincode,
-  //   state,
-  //   city,
-  // } = req.body;
-
   const token = req.body.token;
   console.log("cookie", req.body);
   if (!token) {
@@ -104,7 +89,7 @@ const form = async (req, res) => {
       { _id: req.user.user },
       {
         $set: {
-          license:req.body.license,
+          license: req.body.license,
           valid_from: req.body.formDate,
           valid_till: req.body.toDate,
         },
@@ -142,6 +127,50 @@ const form = async (req, res) => {
             pincode: parseInt(req.body.pincode),
             state: req.body.state,
             city: req.body.city,
+          },
+        }
+      );
+    }
+  } catch (err) {
+    console.log(err);
+    return res.status(401).json({
+      success: false,
+      address: true,
+      blood: false,
+    });
+  }
+
+  const bloodData = {
+    _id: req.user.user,
+    "a+": parseInt(req.body.a_pos),
+    "a-": parseInt(req.body.b_neg),
+    "b+": parseInt(req.body.b_pos),
+    "b-": parseInt(req.body.b_neg),
+    "o+": parseInt(req.body.o_pos),
+    "o-": parseInt(req.body.o_neg),
+    "ab+": parseInt(req.body.ab_pos),
+    "ab-": parseInt(req.body.ab_neg),
+  };
+  console.log(bloodData);
+  try {
+    const data = await Blood.findById(req.user.user);
+    if (!data) {
+      console.log("Address not avilable");
+      await new Blood(bloodData).save();
+    } else {
+      console.log("Address is avilable");
+      await Address.updateOne(
+        { _id: req.user.user },
+        {
+          $set: {
+            "a+": parseInt(req.body.a_pos),
+            "a-": parseInt(req.body.b_neg),
+            "b+": parseInt(req.body.b_pos),
+            "b-": parseInt(req.body.b_neg),
+            "o+": parseInt(req.body.o_pos),
+            "o-": parseInt(req.body.o_neg),
+            "ab+": parseInt(req.body.ab_pos),
+            "ab-": parseInt(req.body.ab_neg),
           },
         }
       );
