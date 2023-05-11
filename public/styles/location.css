@@ -1,0 +1,50 @@
+body {
+    background-color: white;
+    color: red;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom right, #e9b0b0, #ffffff);     
+}
+
+h1 {
+    text-align: center;
+    font-size: 2em;
+}
+
+form {
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+select {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+select:focus {
+    border-color: red;
+    box-shadow: 0 0 4px rgba(255, 0, 0, 0.4);
+}
+
+option {
+    color: #333;
+}
+
+select:hover, option:hover {
+    background: #eee;
+}
