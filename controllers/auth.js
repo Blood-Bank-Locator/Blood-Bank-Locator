@@ -36,23 +36,25 @@ const login = async (req, res) => {
     const token = jwt.sign(
       { user: doc._id },
       process.env.SECRET_KEY,
-      { expiresIn: "1h" }
+      { expiresIn: "2h" }
     );
-    return res.status(200).json({
+    res.cookie('token', token, { httpOnly: true });
+    console.log("sending Data");
+    return res.json({
       success: true,
       login: true,
       signup: false,
       token: token,
     });
+  } else {
+    console.log("wrong password");
+    return res.status(200).json({
+      success: false,
+      login: false,
+      signup: false,
+      msg: "wrong password",
+    });
   }
-
-  console.log("wrong password");
-  res.status(200).json({
-    success: false,
-    login: false,
-    signup: false,
-    msg: "wrong password",
-  });
 };
 
 // ****************** Signup *********************** //
