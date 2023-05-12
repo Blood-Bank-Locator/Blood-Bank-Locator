@@ -45,6 +45,14 @@ const blood = async (req, res) => {
       phone: ele.contact,
       state: ele.state,
       city: ele.city,
+      "a+": ele["a+"],
+      "a-": ele["a-"],
+      "b+": ele["b+"],
+      "b-": ele["b-"],
+      "o+": ele["o+"],
+      "o-": ele["o-"],
+      "ab+": ele["ab+"],
+      "ab-": ele["ab-"],
     };
   });
   res.json(data);

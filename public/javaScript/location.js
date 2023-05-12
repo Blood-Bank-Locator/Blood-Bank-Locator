@@ -272,6 +272,12 @@ function submitBlood() {
 
 async function handelFormSubmit(event) {
   event.preventDefault();
+  if (!navigator.onLine) {
+    const data = JSON.parse(sessionStorage.getItem("data"));
+    console.log(data);
+    displayData(data);
+    return;
+  }
   const choice = {
     blood: blood.value,
     city: city.value,
@@ -281,11 +287,15 @@ async function handelFormSubmit(event) {
 
   const data = await axios.post("/find/blood", choice);
   console.log(data);
+  sessionStorage.clear();
+  sessionStorage.setItem("data", JSON.stringify(data.data));
   displayData(data.data);
 }
 
 function displayData(data) {
-  const donorTableBody = document.getElementById("donorTableBody");
+  const donorTableBody = document.getElementById(
+    "donorTableBody"
+  );
 
   data.forEach((ele) => {
     const row = donorTableBody.insertRow();
@@ -296,7 +306,7 @@ function displayData(data) {
 
     const nameCell = row.insertCell();
     nameCell.textContent = ele.name;
-    console.log(ele.name , ele.phone);
+    console.log(ele.name, ele.phone);
 
     const phoneCell = row.insertCell();
     phoneCell.textContent = ele.phone;
@@ -311,10 +321,10 @@ function displayData(data) {
     stateCell.textContent = ele.state;
 
     const groupCell = row.insertCell();
-    groupCell.textContent = ele.group;
+    groupCell.textContent = blood.value;
 
     const bloodCell = row.insertCell();
-    bloodCell.textContent = ele.blood;
+    bloodCell.textContent = ele[blood.value];
 
     emailCell.setAttribute("data-column", "Email");
     nameCell.setAttribute("data-column", "Name");
@@ -324,6 +334,5 @@ function displayData(data) {
     stateCell.setAttribute("data-column", "State");
     groupCell.setAttribute("data-column", "Group");
     bloodCell.setAttribute("data-column", "Blood");
-})
+  });
 }
-
