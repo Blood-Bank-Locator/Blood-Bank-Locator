@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
     <link rel="stylesheet" href="/styles/auth-form.css">
+    <script src="/javaScript/signup.js" defer></script>
 
   </head>
   <body>
@@ -35,7 +36,7 @@
             <!-- Email -->
             <label for="email">Enter your Email</label>
             <div class="email">
-              <input type="email" name="email" id="email" placeholder="Enter your email"  required />
+              <input type="email" name="email" id="email" placeholder="Enter your email" pattern="[^\s@]+@[^\s@]+\.(com|in)" required />
             </div>
           </div>
 
@@ -43,7 +44,7 @@
           <div class="vertical-inside">
             <label for="contact">Enter your Contact No.</label>
             <div class="contact">
-              <input type="contact" name="contact" id="contact" placeholder="Enter your contact number" required />
+              <input type="number" name="contact" id="contact" placeholder="Enter your contact number" pattern="[0-9]{10}" required />
             </div>  
           </div>
         </div>
@@ -97,6 +98,7 @@
                 name="password"
                 id="password"
                 placeholder="Enter your password"
+                pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@])[A-Za-z\d@]{8,}$"
               />
             </div>
           </div>
@@ -120,26 +122,12 @@
         <ul id="err"></ul>
       </div>
       <div class="vertical" style="align-items: center; padding-left: 0px">
-        <button  onclick="validateEmail()" type="submit" id="submit">Sign Up</button>
+        <button type="submit" id="submit">Sign Up</button>
         <button onclick="location.replace('./login.html')">Login</button>
       </div>
     </form>
   </body>
   <script>
-    const currentDate = new Date().toISOString().split('T')[0];
-    document.getElementById('valid_from').setAttribute('min', currentDate);
-    document.getElementById('valid_till').setAttribute('max', currentDate);
-    function validateEmail() {
-      const email = document.getElementById("email").value;
-      const emailDiv = document.getElementById("emailDiv");
-      // check if email ends with ".com" or ".in"
-      if (email.endsWith(".com") || email.endsWith(".in")) {
-        emailDiv.innerText = email;
-        emailDiv.style.color = "black";
-      } else {
-        emailDiv.innerText = "Enter valid email id";
-        emailDiv.style.color = "red";
-      }
-    }
+    
   </script>
 </html>
