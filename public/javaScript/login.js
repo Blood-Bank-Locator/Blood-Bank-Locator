@@ -19,8 +19,10 @@ async function handelSubmit(e) {
     document.cookie = data.data.token;
     window.location.href = '/user';
   }
-  else
+  else{
+    result.style.display="block";
     result.innerText = "The Email Id Or Password is Wrong";
+  }
 }
 
 const togglePassword = document.querySelector(
