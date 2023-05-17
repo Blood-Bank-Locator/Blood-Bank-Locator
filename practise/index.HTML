@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Document</title>
+    <style>
+      .conta {
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="conta">
+      <h1 id="one" hidden>Hello Himanshu</h1>
+      <h2 id="two" hidden>Hello Nancy</h2>
+    </div>
+    <button onclick="func1();">btn1</button>
+    <button onclick="func2()">btn2</button>
+
+    <script>
+      const one = document.getElementById("one");
+      const two = document.getElementById("two");
+      function func1() {
+        console.log("one");
+        one.hidden = true;
+        two.hidden = false;
+      }
+      function func2() {
+        console.log("two");
+        one.hidden = false;
+        two.hidden = true;
+      }
+    </script>
+  </body>
+</html>
