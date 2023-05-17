@@ -91,4 +91,10 @@ p {
 #togglePassword {
   margin-left: -30px;
   cursor: pointer;
+  position: relative;
+  left: 5%;
+  top: 15%;
+}
+i{
+  
 }
