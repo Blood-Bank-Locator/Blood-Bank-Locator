@@ -29,7 +29,7 @@ app.use("/", home);
 
 app.use("/user", user);
 
-app.use("/find",find);
+app.use("/find", find);
 
 // app.get("/second", (req, res) => {
 //   res.render("second", { title: "Home Page" });

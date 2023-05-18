@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+
 require("dotenv").config();
 
 const Authentication = require("../models/auth");
@@ -18,8 +19,10 @@ const formatDate = (date) => {
   return formattedDate;
 };
 
+/***************User Form Rendering********************/
 const user = async (req, res) => {
   const token = req.cookies.token;
+  console.log(token);
   var id;
   try {
     const email = jwt.verify(token, process.env.SECRET_KEY);
@@ -27,7 +30,7 @@ const user = async (req, res) => {
   } catch (error) {
     res.json({
       success: false,
-      text: "Your time is up, It's been more than 15 min kindly ask for the link again",
+      text: "Your time is up, It's been more than 2 hours kindly ask for the link again",
       msg: "Don't be scare we are there for you ",
     });
   }
@@ -59,9 +62,9 @@ const user = async (req, res) => {
   return res.render("userForm", data);
 };
 
+/***************User Form Data Updation********************/
 const form = async (req, res) => {
-  const token = req.body.token;
-  console.log("cookie", req.body);
+  const token = req.cookies.token;
   if (!token) {
     return res.status(401).send("Unauthorized");
   }

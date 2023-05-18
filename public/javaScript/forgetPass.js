@@ -13,5 +13,6 @@ async function handelSubmit(e) {
   else result.style.color = "red";
   if(token.data.text) result.innerText = token.data.text;
   if(token.data.msg) text.innerText = token.data.msg;
+  result.style.display = 'block';
   console.log(token);
 }

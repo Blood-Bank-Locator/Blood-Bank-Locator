@@ -38,7 +38,7 @@ const login = async (req, res) => {
       process.env.SECRET_KEY,
       { expiresIn: "2h" }
     );
-    res.cookie('token', token, { httpOnly: true });
+    res.cookie("token", token, { httpOnly: true });
     console.log("sending Data");
     return res.json({
       success: true,
@@ -85,16 +85,12 @@ const signup = async (req, res) => {
   console.log(otp);
   const hashOtp = await bcrypt.hash(otp, salt);
   const hashPass = await bcrypt.hash(password, salt);
-  const hashLicense = await bcrypt.hash(
-    license_number,
-    salt
-  );
   const tempInput = {
     _id: email,
     contact: contact,
     password: hashPass,
     blood_bank_name: blood_bank_name,
-    license: hashLicense,
+    license: license_number,
     valid_till: valid_till,
     valid_from: valid_from,
     otp: hashOtp,

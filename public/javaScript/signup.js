@@ -1,10 +1,10 @@
 const currentDate = new Date().toISOString().split("T")[0];
 document
   .getElementById("valid_from")
-  .setAttribute("min", currentDate);
+  .setAttribute("max", currentDate);
 document
   .getElementById("valid_till")
-  .setAttribute("max", currentDate);
+  .setAttribute("min", currentDate);
 
 function isValidEmail(email) {
   // check if email ends with ".com" or ".in"

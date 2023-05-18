@@ -15,6 +15,14 @@ h1 {
   text-align: center;
   margin-top: 50px;
 }
+p {
+  text-align: center;
+  padding: 10px;
+  background-color: white;
+  font-size: medium;
+  font-weight: 700;
+  display: none;
+}
 form {
   background-color: #fff;
   border-radius: 10px;
