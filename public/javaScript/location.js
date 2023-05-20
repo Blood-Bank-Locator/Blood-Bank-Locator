@@ -1,5 +1,3 @@
-// const blood = require("../../models/blood");
-
 function updateCities() {
   var stateElement = document.getElementById("state");
   var cityElement = document.getElementById("city");
